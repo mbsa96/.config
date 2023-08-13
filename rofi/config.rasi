@@ -9,4 +9,4 @@ configuration {
 }
 
 //@theme "/home/marcos/.local/share/rofi/themes/rounded-blue-dark.rasi"
-@theme "/home/marcos/.local/share/rofi/themes/squared-nord.rasi"
+//@theme "/home/marcos/.local/share/rofi/themes/rounded-nord-dark.rasi"
