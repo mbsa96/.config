@@ -149,12 +149,12 @@ super + ctrl + alt + s
     shutdown now
 
 # Conectar con MPOW
-#super + ctrl + alt + i
-#    bluetoothctl connect 21:07:A1:00:7C:78
+super + ctrl + alt + i
+    bluetoothctl connect 21:07:A1:00:7C:78
 
 # Desconectar MPOW
-#super + ctrl + alt + k
-#    bluetoothctl disconnect 21:07:A1:00:7C:78
+super + ctrl + alt + k
+    bluetoothctl disconnect 21:07:A1:00:7C:78
 
 # lockscreen
 alt + shift + x
