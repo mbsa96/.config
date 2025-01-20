@@ -1,26 +1,49 @@
 #! /bin/sh
 
 pgrep -x sxhkd > /dev/null || sxhkd &
-picom &
+pgrep -x picom > /dev/null || picom &
 setxkbmap es &
+wmname LG3D &
+copyq --start-server
 
-bspc monitor -d I II III IV V VI VII VIII IX X &
+#bspc monitor HDMI-1 -d I II III IV V VI VII VIII IX X &
+
+# bspc monitor DP-1 -d 1 2 3 4 
+# bspc monitor HDMI-1 -d 5 6 7 8
+# bspc monitor DP-2 -d 9 10 11 12
+if [ "$(bspc query -M | wc -l)" -eq 3 ]; then
+    bspc monitor HDMI-1 -d 1 2 3
+    bspc monitor DP-1 -d 4 5 6
+    bspc monitor DP-2 -d 7 8 9
+fi
+
+if [ "$(bspc query -M | wc -l)" -eq 2 ]; then
+    bspc monitor HDMI-1 -d 1 2 3
+    bspc monitor DP-1 -d 4 5 6
+fi
+
+if [ "$(bspc query -M | wc -l)" -eq 1 ]; then
+    bspc monitor DP-1 -d 1 2 3
+fi
+
+
+if pgrep wallpapers.sh &> /dev/null ; then
+    killall wallpapers.sh  ; 
+fi
+~/bin/wallpapers.sh &
 
 dunst &
-nitrogen --restore &
-~/.config/polybar/forest/launch.sh
+~/.config/polybar/forest/launch.sh 
 
-bspc config border_width         2
-bspc config window_gap          12
+bspc config top_padding		10
+bspc config border_width         0
+bspc config window_gap          10
 
 bspc config split_ratio          0.52
 bspc config borderless_monocle   true
 bspc config gapless_monocle      true
 
-bspc rule -a Gimp desktop='^8' state=floating follow=on
-bspc rule -a Chromium desktop='^2'
-bspc rule -a mplayer2 state=floating
-bspc rule -a Kupfer.py focus=on
-bspc rule -a Screenkey manage=off
 bspc rule -a gnome-calculator state=floating
 bspc rule -a Gpick state=floating
+bspc rule -a Gsimplecal state=floating
+
